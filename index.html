@@ -3,40 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine's Day ❤️</title>
+<title>❤️</title>
 
 <style>
     body {
         margin: 0;
         overflow: hidden;
         height: 100vh;
-        background: linear-gradient(#ffdde1, #ee9ca7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        color: white;
-        text-align: center;
+        background: radial-gradient(circle at center, #ffe6ea, #ff9aa2);
     }
 
-    h1 {
-        font-size: 2.5rem;
-        z-index: 10;
-    }
-
-    .floating {
+    .flower {
         position: absolute;
-        font-size: 28px;
+        font-size: 32px;
         animation: floatUp linear forwards;
+        pointer-events: none;
     }
 
     @keyframes floatUp {
         from {
-            transform: translateY(100vh) scale(1);
+            transform: translateY(110vh) scale(0.8) rotate(0deg);
             opacity: 1;
         }
         to {
-            transform: translateY(-10vh) scale(1.6);
+            transform: translateY(-10vh) scale(1.4) rotate(360deg);
             opacity: 0;
         }
     }
@@ -45,21 +35,21 @@
 
 <body>
 
-<h1>Happy Valentine's Day ❤️<br>I love you</h1>
-
 <script>
-function createFloatingItem() {
-    const el = document.createElement("div");
-    el.className = "floating";
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.animationDuration = (5 + Math.random() * 5) + "s";
-    el.innerHTML = Math.random() > 0.5 ? "❤️" : "🌹";
-    document.body.appendChild(el);
+const flowers = ["🌹","🌺","🌷","🌸","💐","❤️"];
 
-    setTimeout(() => el.remove(), 9000);
+function createFlower() {
+    const f = document.createElement("div");
+    f.className = "flower";
+    f.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.animationDuration = (6 + Math.random() * 6) + "s";
+    document.body.appendChild(f);
+
+    setTimeout(() => f.remove(), 12000);
 }
 
-setInterval(createFloatingItem, 300);
+setInterval(createFlower, 200);
 </script>
 
 </body>
